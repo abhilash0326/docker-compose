@@ -8,15 +8,11 @@ pipeline{
 		stages{
 				
 				stage ('installing git'){
-					steps{
-										dir ('/mnt/projects'){
 										steps{
 												sh "rm -rf *"
 												sh "yum install git -y"
 												sh "git clone https://github.com/abhilash0326/game-of-life.git"
 											}
-										}
-					}
 				}
 				stage ('installing maven'){
 					steps{					
