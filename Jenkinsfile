@@ -17,7 +17,7 @@ pipeline{
 				stage ('building .war file'){
 										steps {
 												dir ('/mnt/projects/game-of-life/'){
-													sh "rm -rf /root/.m2"
+													sh "rm -rf /root/.m2/"
 													sh "rm -rf /mnt/projects/game-of-life/gameoflife-web/target"
 													sh "mvn install"
 													
