@@ -16,7 +16,7 @@ pipeline{
 				}
 				stage ('installing maven'){
 					steps{					
-										dir ('/mnt/projects/game-of-life'){
+										dir ('/mnt/projects/game-of-life/'){
 										steps{
 												sh "rm -rf /root/.m2"
 												sh "mvn clean install"
@@ -26,7 +26,7 @@ pipeline{
 				}
 				stage ('transfering file from target'){
 					steps{					
-										dir ('/mnt/docker'){
+										dir ('/mnt/docker/'){
 										steps{
 												
 												sh "yum install docker -y"
