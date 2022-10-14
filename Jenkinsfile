@@ -30,9 +30,9 @@ pipeline{
 										dir ('/mnt/docker/'){
 										steps{
 												
-												sh "yum install docker -y"
-												sh "systemctl start docker"
-												sh "rm -rf gameoflife.war"
+												sh "sudo yum install docker -y"
+												sh "sudo systemctl start docker"
+												sh "sudo rm -rf gameoflife.war"
 												sh "cp /mnt/projects/game-of-life/gameoflife-web/target/gameoflife.war ."
 											}
 										}
