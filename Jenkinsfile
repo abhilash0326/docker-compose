@@ -14,19 +14,20 @@ pipeline{
 												sh "git clone https://github.com/abhilash0326/game-of-life.git"
 											}
 				}
-				stage ('installing maven'){
-					steps{					
-										dir ('/mnt/projects/game-of-life'){
-										steps{
-												sh "rm -rf /root/.m2/repository"
-												sh "mvn clean install"
-											}
+				stage ('building .war file'){
+										steps {
+												dir ('/mnt/projects/game-of-life/'){
+													sh "rm -rf /root/.m2"
+													sh "rm -rf /mnt/jenkins/game-of-life/target"
+													sh "mvn clean install"
+													
+												}
 										}
+					
 					}
-				}
 				stage ('transfering file from target'){
 					steps{					
-										dir ('/mnt/docker'){
+										dir ('/mnt/docker/'){
 										steps{
 												
 												sh "yum install docker -y"
