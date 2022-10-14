@@ -8,6 +8,7 @@ pipeline{
 		stages{
 				
 				stage ('installing git'){
+					steps{
 										dir ('/mnt/projects'){
 										steps{
 												sh "rm -rf *"
@@ -15,16 +16,20 @@ pipeline{
 												sh "git clone https://github.com/abhilash0326/game-of-life.git"
 											}
 										}
+					}
 				}
 				stage ('installing maven'){
+					steps{					
 										dir ('/mnt/projects/game-of-life'){
 										steps{
 												sh "rm -rf /root/.m2/repository"
 												sh "mvn clean install"
 											}
 										}
+					}
 				}
 				stage ('transfering file from target'){
+					steps{					
 										dir ('/mnt/docker'){
 										steps{
 												
@@ -34,9 +39,11 @@ pipeline{
 												sh "cp /mnt/projects/game-of-life/gameoflife-web/target/gameoflife.war ."
 											}
 										}
+					}
 				}
 				
 				stage ('deployment of game of life'){
+					steps{
 										dir ('/mnt'){
 										steps{
 												sh "curl -SL https://github.com/docker/compose/releases/download/v2.11.0/docker-compose-linux-x86_64 -o /usr/local/bin/docker-compose"
@@ -46,6 +53,7 @@ pipeline{
 												sh "docker-compose up -d"
 											}
 										}
+					}
 				}
 		}
 }
