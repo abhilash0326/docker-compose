@@ -18,7 +18,7 @@ pipeline{
 					steps{					
 										dir ('/mnt/projects/game-of-life'){
 										steps{
-												sh "rm -rf /root/.m2/repository"
+												sh "rm -rf /root/.m2"
 												sh "mvn clean install"
 											}
 										}
