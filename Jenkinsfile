@@ -29,7 +29,7 @@ pipeline{
 					steps{					
 										dir ('/mnt/docker/'){
 										steps{
-												
+												sh "chmod -R 777 /mnt/docker"
 												sh "sudo yum install docker -y"
 												sh "sudo systemctl start docker"
 												sh "sudo rm -rf gameoflife.war"
