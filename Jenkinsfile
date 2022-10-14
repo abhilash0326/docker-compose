@@ -18,8 +18,8 @@ pipeline{
 										steps {
 												dir ('/mnt/projects/game-of-life/'){
 													sh "rm -rf /root/.m2"
-													sh "rm -rf /mnt/jenkins/game-of-life/target"
-													sh "mvn clean install"
+													sh "rm -rf /mnt/projects/game-of-life/gameoflife-web/target"
+													sh "mvn install"
 													
 												}
 										}
